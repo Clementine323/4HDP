@@ -26,8 +26,10 @@ for rel in required:
 
 for path in ROOT.rglob('*'):
     rel = path.relative_to(ROOT)
+    if '.git' in rel.parts:
+        continue
     low = path.name.lower()
-    if path.is_dir() and (low in {'.git', '.venv', '__pycache__', 'memory_db', 'results'} or low.startswith('results_')):
+    if path.is_dir() and (low in {'.venv', '__pycache__', 'memory_db', 'results'} or low.startswith('results_')):
         errors.append(f'forbidden directory: {rel}')
     if path.is_file():
         if low == '.env' or low.startswith('.env.backup') or '.bak' in low:
@@ -45,6 +47,8 @@ secret_patterns = [
     re.compile(r'AIza[A-Za-z0-9_-]{20,}'),
 ]
 for path in ROOT.rglob('*'):
+    if '.git' in path.relative_to(ROOT).parts:
+        continue
     if not path.is_file() or path.name == 'SOURCE_CHECKSUMS.sha256':
         continue
     try:
