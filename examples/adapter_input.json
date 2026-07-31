@@ -1,0 +1,14 @@
+{
+  "example_type": "illustrative_only",
+  "tool_name": "PortfolioDataTool",
+  "tool_params": {
+    "client_id": "demo-client"
+  },
+  "description": "Retrieve portfolio positions for analysis.",
+  "user_intent": "Analyse portfolio sector exposure.",
+  "current_step": "At step 1, you need to retrieve the portfolio positions.",
+  "allowed_tool_names": [
+    "PortfolioDataTool",
+    "PortfolioSummaryTool"
+  ]
+}

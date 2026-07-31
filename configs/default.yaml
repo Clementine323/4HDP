@@ -1,0 +1,14 @@
+# Default FourHDP Policy Configuration
+
+# Operation Mode: MONITOR (log only) or BLOCK (prevent actions)
+mode: "BLOCK"
+
+# LLM Model used for auditing intent
+llm_model_name: "gpt-4o"
+
+# List of paths that are considered sensitive and should trigger stricter checks
+sensitive_paths: []
+
+# OpenAI Configuration
+openai_api_key: "${OPENAI_API_KEY}"  # Set via environment variable or .env file
+openai_base_url: "${OPENAI_BASE_URL}"  # Set via environment variable or .env file (e.g. https://api.openai.com/v1)

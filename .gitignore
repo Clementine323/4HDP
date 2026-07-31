@@ -1,0 +1,78 @@
+# Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*
+*secret*
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Experiment outputs
+results/
+results_*/
+**/results/
+**/results_*/
+logs/
+**/logs/
+*.log
+*_rq3.json
+*_traces.jsonl
+*_audit_events.jsonl
+*_memory_events.jsonl
+*_timing.json
+
+# Databases and generated memory stores
+memory_db/
+**/memory_db/
+chroma/
+**/chroma/
+*.sqlite
+*.sqlite3
+*.db
+
+# Backups, recovery files and archives
+_local_archive/
+revision_fix_backups/
+reproduction_snapshot/
+.share_stage_*/
+*.bak
+*.bak_*
+*_backup_*
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# OS and editor files
+.DS_Store
+._*
+.vscode/
+.idea/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Generated experiment metadata
+results_campaign_metadata/
+.current_*
+*_stamp.txt
+
+# macOS metadata
+._*
+
+# Additional generated/public-release exclusions
+*.bak*
+revision_batch_logs/
+*_preflight_*.json
+*_verification_*.json
+*.part-*
