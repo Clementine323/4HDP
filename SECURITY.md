@@ -14,7 +14,6 @@ python scripts/verify_public_package.py
 bash scripts/check_release_safety.sh
 ```
 
-this checked package. Any corresponding credential should be revoked or rotated
 by its owner.
 
 Upstream and release-specific files were reviewed to remove credentials,

@@ -62,9 +62,10 @@ protocol. It does not claim a proof of universal or absolute security.
 
 ## Licence status
 
-The upstream ASB/AIOS material retains its MIT licence. A top-level licence for
-the original 4HDP code must be selected by the copyright holder before the
-repository is publicly available for research review and reproducibility. No licence is granted for the original 4HDP implementation; see `USAGE_NOTICE.md`.
+The upstream ASB/AIOS material retains its MIT licence. The original 4HDP
+implementation is publicly available for research review and reproducibility.
+No top-level open-source licence is currently granted for the original 4HDP
+implementation; see `USAGE_NOTICE.md`.
 
 ## Data and privacy notice
 
