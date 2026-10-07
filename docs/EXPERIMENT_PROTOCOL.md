@@ -1,7 +1,7 @@
 # Experiment protocol
 
-This repository distributes implementation and fixed inputs, not experimental
-outputs.
+This repository distributes implementation, fixed inputs, and a curated set of
+selected revision results under `reproducibility/revision_evidence/`.
 
 ## Environment
 
@@ -53,5 +53,6 @@ bash run_missing_mp_mixed_campaign.sh smoke
 bash run_missing_mp_mixed_campaign.sh formal
 ```
 
-Result CSV/JSON files, full logs, raw audit traces, and local databases are
-generated locally and are excluded from this release.
+Full raw outputs, unselected runs, complete logs and audit traces, and local
+databases remain excluded. The selected result summaries and de-identified
+minimal records are documented in the revision-evidence directory.

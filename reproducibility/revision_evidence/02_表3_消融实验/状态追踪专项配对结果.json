@@ -1,0 +1,113 @@
+{
+  "repeat": 1,
+  "units": [
+    {
+      "kind": "MP",
+      "mode": "full",
+      "expected": 100,
+      "valid": 100,
+      "framework_errors": 0,
+      "audit_failure_blocks": 0,
+      "security_blocks": 10,
+      "attack_successes": 0,
+      "security_false_positives": null,
+      "audit_events": 133,
+      "cumulative_blocks": 2
+    },
+    {
+      "kind": "MIXED",
+      "mode": "full",
+      "expected": 100,
+      "valid": 100,
+      "framework_errors": 0,
+      "audit_failure_blocks": 0,
+      "security_blocks": 99,
+      "attack_successes": 0,
+      "security_false_positives": null,
+      "audit_events": 100,
+      "cumulative_blocks": 0
+    },
+    {
+      "kind": "BENIGN",
+      "mode": "full",
+      "expected": 6,
+      "valid": 6,
+      "framework_errors": 0,
+      "audit_failure_blocks": 0,
+      "security_blocks": 0,
+      "attack_successes": null,
+      "security_false_positives": 0,
+      "audit_events": 12,
+      "cumulative_blocks": 0
+    },
+    {
+      "kind": "MP",
+      "mode": "no_history",
+      "expected": 100,
+      "valid": 100,
+      "framework_errors": 0,
+      "audit_failure_blocks": 0,
+      "security_blocks": 10,
+      "attack_successes": 0,
+      "security_false_positives": null,
+      "audit_events": 132,
+      "cumulative_blocks": 0
+    },
+    {
+      "kind": "MIXED",
+      "mode": "no_history",
+      "expected": 100,
+      "valid": 100,
+      "framework_errors": 0,
+      "audit_failure_blocks": 0,
+      "security_blocks": 99,
+      "attack_successes": 0,
+      "security_false_positives": null,
+      "audit_events": 100,
+      "cumulative_blocks": 0
+    },
+    {
+      "kind": "BENIGN",
+      "mode": "no_history",
+      "expected": 6,
+      "valid": 6,
+      "framework_errors": 0,
+      "audit_failure_blocks": 0,
+      "security_blocks": 0,
+      "attack_successes": null,
+      "security_false_positives": 0,
+      "audit_events": 12,
+      "cumulative_blocks": 0
+    }
+  ],
+  "paired": [
+    {
+      "kind": "MP",
+      "valid_pairs": 100,
+      "excluded": 0,
+      "full_minus_no_history_sum": 0,
+      "changed_ids": [],
+      "preannotated_multistep_pairs": 6,
+      "preannotated_multistep_difference": 0
+    },
+    {
+      "kind": "MIXED",
+      "valid_pairs": 100,
+      "excluded": 0,
+      "full_minus_no_history_sum": 0,
+      "changed_ids": [],
+      "preannotated_multistep_pairs": 4,
+      "preannotated_multistep_difference": 0
+    },
+    {
+      "kind": "BENIGN",
+      "valid_pairs": 6,
+      "excluded": 0,
+      "full_minus_no_history_sum": 0,
+      "changed_ids": [],
+      "preannotated_multistep_pairs": 6,
+      "preannotated_multistep_difference": 0
+    }
+  ],
+  "caution": "Only one repeated round; no significance or stability conclusion."
+}

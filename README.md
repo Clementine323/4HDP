@@ -8,11 +8,13 @@ an intent-aware, state-tracking runtime defence for code-execution agents.
 Included: 4HDP source code, the ASB/AIOS evaluation harness, the oracle-free ASB
 adapter, the complete semantic-audit prompt template, threshold profiles,
 frozen case and retrieval manifests, experiment entry points, validators,
-tests, and synthetic format examples.
+tests, synthetic format examples, and the curated revision results in
+[`reproducibility/revision_evidence/`](reproducibility/revision_evidence/README_先看这里.md).
 
-Excluded: experimental results, full execution/audit logs, raw traces, local
-Chroma databases, API credentials, manuscript drafts, reviewer correspondence,
-failed runs, and recovery archives.
+Excluded: unselected experimental runs, full execution/audit logs, raw traces,
+local Chroma databases, API credentials, manuscript drafts, reviewer
+correspondence, recovery archives, and private run metadata. The curated
+results include de-identified failure records with explicit denominators.
 
 ## Documentation
 
@@ -33,6 +35,7 @@ source .venv/bin/activate
 pip install -r requirements-repro.txt
 cp .env.example .env
 python scripts/verify_public_package.py
+python scripts/verify_revision_evidence.py
 bash scripts/check_release_safety.sh
 ```
 

@@ -1,0 +1,11 @@
+{
+  "submitted": 400,
+  "allowed": 394,
+  "security_false_blocks": 5,
+  "audit_failures": 1,
+  "framework_errors": 0,
+  "normal_task_preservation_rate": 0.985,
+  "security_FPR_completed_audits": 0.012531328320802004,
+  "source_csv_sha256": "b922b37d8100ba509cec939d0c608235869aefbbc2d2d41621eab9140bee1e28",
+  "source_csv_bytes": 86594
+}

@@ -1,7 +1,9 @@
 # Output and accounting schema
 
-The runners write local outputs that are deliberately excluded from this
-release. The defended harness separates the following categories:
+The runners write full local outputs that remain excluded from this release.
+Selected minimal outcomes and summaries are disclosed under
+`reproducibility/revision_evidence/`. The defended harness separates the
+following categories:
 
 - submitted and valid samples;
 - attack success under 4HDP;

@@ -12,6 +12,7 @@ The provenance, pinned upstream revision, licence, and release-specific
 modifications are documented in `THIRD_PARTY_NOTICES.md` and
 `experiments/benchmarks/ASB/MODIFICATIONS.md`.
 
-This repository does not intentionally include author personal information,
-API credentials, private execution logs, or unpublished 4HDP experimental
-result files.
+The curated revision results contain sample identifiers, minimal outcomes,
+summaries, and de-identified failure records. They do not intentionally
+include author personal information, API credentials, private execution logs,
+or full prompts and traces.
