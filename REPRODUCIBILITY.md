@@ -15,3 +15,5 @@
 Full raw logs and unselected runs remain excluded. The revision evidence
 contains only de-identified minimal outcomes and summaries needed to verify
 the manuscript's selected results without rerunning remote models.
+
+RQ3 figure 8/9 audit-overhead aggregates and the manuscript-used figures are in `reproducibility/revision_evidence/07_图8图9_RQ3性能开销/`. These aggregates cover the same 15 adopted Table 2 units; the extra 19 repeated runs and the benign 400 are excluded.

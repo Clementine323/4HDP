@@ -1,0 +1,19 @@
+{
+  "experiment_scope": "Table 2 adopted round / repeat_04; 15 model-attack units x 100 standard cases; exclude 19 additional repeats and 400 benign cases",
+  "unit_count": 15,
+  "standard_cases": 1500,
+  "additional_retests_excluded": 19,
+  "audit_event_count": 2925,
+  "audit_latency_mean_s": 2.757205291731745,
+  "audit_latency_median_s": 2.843266010284424,
+  "audit_latency_p95_lower_index_s": 5.224593877792358,
+  "audit_latency_p95_linear_interpolated_s": 5.248517370223991,
+  "audit_latency_max_s": 920.3216068744659,
+  "audit_llm_prompt_tokens": 4252531,
+  "audit_llm_completion_tokens": 347196,
+  "audit_llm_total_tokens": 4599727,
+  "audit_llm_calls": 1979,
+  "latency_field": "audit_latency_s of each event (raw events held locally, not released)",
+  "token_source_field": "audit_token_usage of per-unit rq3.json",
+  "rounding": "Display per-unit latency to 2 decimals, overall mean to 2 decimals, total tokens as integers"
+}

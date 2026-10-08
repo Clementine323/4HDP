@@ -61,6 +61,9 @@ private_patterns = {
 }
 for rel in manifest:
     path = ROOT / rel
+    if path.suffix.lower() == '.png':
+        check(path.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), f'Invalid PNG: {rel}')
+        continue
     body = path.read_text(encoding='utf-8')
     check('\r' not in body and '\ufffd' not in body, f'Broken text encoding/line endings: {rel}')
     for name, pattern in private_patterns.items():
@@ -203,6 +206,60 @@ check(all_group['independent_scenarios'] == 48 and all_group['audit_failures'] =
       'Feedback overall summary')
 for key in ('audit_calls', 'attacker_calls', 'judge_calls', 'invalid_candidates'):
     check(sum(int(r[key]) for r in trials) == all_group[key], f'Feedback {key}')
+
+# RQ3 figures 8/9: the Table 2 adopted round only, excluding the 19 extra repeats.
+rq3_prefix = '07_图8图9_RQ3性能开销/'
+rq3_units = rows(rq3_prefix + '图8图9_逐单元审计开销.csv')
+rq3_summary = json.loads((ROOT / rq3_prefix / '图8图9_整体汇总.json').read_text(encoding='utf-8'))
+selected_units = {(r['受测智能体推理模型'], r['攻击类型']): r
+                  for r in units if r['统计集合'] == '标准1500次'}
+check(len(rq3_units) == 15 and len(selected_units) == 15, 'RQ3 standard unit count')
+rq3_keys = [(r['受测智能体推理模型'], r['攻击类型']) for r in rq3_units]
+check(len(set(rq3_keys)) == 15 and set(rq3_keys) == set(selected_units), 'RQ3 model/attack coverage')
+for r in rq3_units:
+    k = (r['受测智能体推理模型'], r['攻击类型'])
+    if k not in selected_units:
+        continue
+    check(integer(r, '标准测试数') == 100 and integer(selected_units[k], '执行数') == 100,
+          f'RQ3 case count {k}')
+    check(r['源结果CSV_SHA256'] == selected_units[k]['源结果文件SHA256'],
+          f'RQ3 source CSV/Table 2 mismatch {k}')
+    check(integer(r, '输入Token') + integer(r, '输出Token') == integer(r, '总Token'),
+          f'RQ3 per-unit token sum {k}')
+    check(integer(r, '审计事件数') > 0 and float(r['平均单次审计耗时_秒']) >= 0,
+          f'RQ3 latency/count invalid {k}')
+    for col in ('源结果CSV_SHA256', '源RQ3统计JSON_SHA256', '源审计事件JSONL_SHA256'):
+        check(bool(re.fullmatch(r'[a-f0-9]{64}', r[col])), f'RQ3 source hash invalid {k}/{col}')
+    if k in {('gpt-4o-mini', 'MIXED'), ('llama-3.1-70b-instruct', 'MIXED')}:
+        check(integer(r, '审计LLM调用数') == integer(r, '总Token') == 0,
+              f'RQ3 static-only unit token/call mismatch {k}')
+check(sum(integer(r, '标准测试数') for r in rq3_units) == 1500, 'RQ3 standard cases sum')
+check(sum(integer(r, '审计事件数') for r in rq3_units) == 2925, 'RQ3 audit event sum')
+check(sum(integer(r, '输入Token') for r in rq3_units) == 4252531, 'RQ3 prompt token sum')
+check(sum(integer(r, '输出Token') for r in rq3_units) == 347196, 'RQ3 completion token sum')
+check(sum(integer(r, '总Token') for r in rq3_units) == 4599727, 'RQ3 combined token sum')
+check(sum(integer(r, '审计LLM调用数') for r in rq3_units) == rq3_summary['audit_llm_calls'],
+      'RQ3 call count sum')
+check(sum(integer(r, '标准测试数') for r in rq3_units) == rq3_summary['standard_cases']
+      and sum(integer(r, '审计事件数') for r in rq3_units) == rq3_summary['audit_event_count']
+      and rq3_summary['unit_count'] == 15 and rq3_summary['additional_retests_excluded'] == 19,
+      'RQ3 summary denominators')
+check(sum(integer(r, '输入Token') for r in rq3_units) == rq3_summary['audit_llm_prompt_tokens']
+      and sum(integer(r, '输出Token') for r in rq3_units) == rq3_summary['audit_llm_completion_tokens']
+      and sum(integer(r, '总Token') for r in rq3_units) == rq3_summary['audit_llm_total_tokens'],
+      'RQ3 summary token totals')
+weighted = sum(float(r['平均单次审计耗时_秒']) * integer(r, '审计事件数')
+               for r in rq3_units) / sum(integer(r, '审计事件数') for r in rq3_units)
+check(abs(weighted - rq3_summary['audit_latency_mean_s']) < 1e-7 and
+      abs(weighted - 2.757205291731745) < 1e-7, 'RQ3 weighted mean latency')
+check(2.84 < rq3_summary['audit_latency_median_s'] < 2.85 and
+      5.22 < rq3_summary['audit_latency_p95_lower_index_s'] < 5.23 and
+      5.24 < rq3_summary['audit_latency_p95_linear_interpolated_s'] < 5.26,
+      'RQ3 published median/percentiles out of expected range')
+for fig in (8, 9):
+    figure = ROOT / rq3_prefix / f'图{fig}_论文采用图片.png'
+    check(figure.is_file() and figure.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'),
+          f'RQ3 figure {fig} missing/invalid PNG')
 
 if problems:
     print('REVISION_EVIDENCE_VERIFY_FAILED')
