@@ -2,8 +2,11 @@
 
 - The formal protocol uses finite frozen samples and recorded seeds; it is not a
   theoretical security proof.
-- The formal MP/MIXED campaign records one formal run per cell rather than a
-  multi-seed confidence interval.
+- The selected no-defence MP/MIXED comparison cells have one formal 100-case
+  run each. The defended Table 2 stability analysis reports three full
+  same-protocol rounds, but these do not provide a multi-seed confidence
+  interval or a verified remote-model weight snapshot. The state-tracking
+  paired comparison has only one round.
 - Remote model APIs can change over time and may be nondeterministic.
 - The original-task metric is marker-based and can undercount partial or
   text-only recovery.

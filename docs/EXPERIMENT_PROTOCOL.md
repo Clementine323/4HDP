@@ -19,7 +19,14 @@ selected revision results under `reproducibility/revision_evidence/`.
 - Defence conditions: no defence and full 4HDP.
 - Frozen cases per model–attack–defence cell: 100.
 - Random seed: 0.
-- Formal repetitions: one formal campaign per cell.
+- Each invocation of this entry point performs one formal campaign per cell.
+  The selected no-defence MP/MIXED comparison cells each come from one such
+  campaign. This invocation count must not be confused with the defended
+  Table 2 stability analysis: that analysis reports three independent,
+  same-protocol full runs of 15 model–attack cells (100 cases per cell), plus
+  19 separately reported repeats of existing GPT-4o-mini/MIXED cases in each
+  round. See `reproducibility/revision_evidence/README_先看这里.md` for the
+  selected rounds and denominators.
 - Entry point: `experiments/benchmarks/ASB/run_missing_mp_mixed_campaign.sh`.
 
 The poisoned-memory database is intentionally not distributed. Rebuild it with
